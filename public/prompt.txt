@@ -1,0 +1,11 @@
+Audit this public webpage for on-page SEO using TinyFish Fetch: {{URL}}
+
+Use Fetch with HTML output, links enabled, image links enabled, and a live fetch (ttl 0). Evaluate the title, meta description, H1/H2 hierarchy, visible content depth, internal/external links, meaningful image alt coverage when detectable, detected language, redirects/final URL and HTTPS.
+
+Give me:
+1) a 0–100 explainable SEO score,
+2) the top fixes sorted HIGH/MEDIUM/LOW,
+3) a compact page snapshot with counts,
+4) one sentence stating what this audit does NOT measure.
+
+Do not invent Lighthouse, Core Web Vitals, backlink, Search Console, traffic or indexation data.
