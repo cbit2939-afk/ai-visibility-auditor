@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>AI Visibility Auditor</title>
+  <meta name="description" content="Audit search visibility and AI readability with TinyFish Search, Fetch and Agent." />
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <main class="shell">
+    <section class="hero">
+      <div class="eyebrow">TinyFish Bounty Drop 001 · 3 Endpoint Build</div>
+      <h1>AI Visibility <span>Auditor</span></h1>
+      <p class="lead">Measure how a page appears in search, what machine extraction can read, and what a browser-capable AI can understand — then turn the gaps into fixes you can ship today.</p>
+    </section>
+
+    <section class="panel form-panel">
+      <form id="auditForm">
+        <label>
+          <span>Page URL</span>
+          <input id="url" type="url" required placeholder="https://example.com/page" autocomplete="url" />
+        </label>
+        <label>
+          <span>Target search query <em>(optional)</em></span>
+          <input id="query" type="text" placeholder="e.g. AI web agents" />
+        </label>
+        <label>
+          <span>TinyFish API key</span>
+          <input id="apiKey" type="password" required placeholder="sk-tinyfish-…" autocomplete="off" />
+          <small>Used for this request only. Never stored.</small>
+        </label>
+        <button id="runBtn" type="submit">Run 3-endpoint audit</button>
+      </form>
+      <div class="security-note"><strong>200-point mode:</strong> Search + Fetch + Agent. Search and Fetch are free; Agent may use TinyFish wallet funds.</div>
+      <div class="demo-row">
+        <span>Quick demo targets:</span>
+        <button type="button" class="ghost demo" data-url="https://www.tinyfish.ai/" data-query="TinyFish web agents">TinyFish</button>
+        <button type="button" class="ghost demo" data-url="https://en.wikipedia.org/wiki/Search_engine_optimization" data-query="search engine optimization">Wikipedia SEO</button>
+        <button type="button" class="ghost demo" data-url="https://example.com/" data-query="example domain">Example.com</button>
+      </div>
+    </section>
+
+    <section id="status" class="status hidden"></section>
+
+    <section id="results" class="results hidden">
+      <div class="score-card">
+        <div>
+          <div class="muted">AI Visibility Score</div>
+          <div id="score" class="score">—</div>
+          <div id="queryUsed" class="muted"></div>
+        </div>
+        <div id="grade" class="grade">—</div>
+      </div>
+
+      <div class="endpoint-grid">
+        <article class="endpoint-card">
+          <div class="endpoint-kicker">1 · SEARCH</div>
+          <strong id="searchStatus">—</strong>
+          <p id="searchDetail">Search visibility</p>
+          <div id="searchSub" class="subscore">—</div>
+        </article>
+        <article class="endpoint-card">
+          <div class="endpoint-kicker">2 · FETCH</div>
+          <strong id="fetchStatus">—</strong>
+          <p id="fetchDetail">Machine extraction</p>
+          <div id="fetchSub" class="subscore">—</div>
+        </article>
+        <article class="endpoint-card">
+          <div class="endpoint-kicker">3 · AGENT</div>
+          <strong id="agentStatus">—</strong>
+          <p id="agentDetail">Browser-readable content</p>
+          <div id="agentSub" class="subscore">—</div>
+        </article>
+      </div>
+
+      <div class="summary-grid">
+        <article class="metric"><span>Title</span><strong id="titleMetric">—</strong></article>
+        <article class="metric"><span>Description</span><strong id="descMetric">—</strong></article>
+        <article class="metric"><span>H1</span><strong id="h1Metric">—</strong></article>
+        <article class="metric"><span>Links</span><strong id="linksMetric">—</strong></article>
+        <article class="metric"><span>Images</span><strong id="imagesMetric">—</strong></article>
+        <article class="metric"><span>Words</span><strong id="wordsMetric">—</strong></article>
+      </div>
+
+      <div class="results-grid">
+        <section class="panel">
+          <div class="section-head">
+            <h2>Same-day fixes</h2>
+            <span id="issueCount" class="pill">0 issues</span>
+          </div>
+          <div id="issues"></div>
+        </section>
+
+        <section class="panel">
+          <div class="section-head"><h2>Search vs readability</h2></div>
+          <div id="visibilityCompare" class="compare-copy"></div>
+          <div class="divider"></div>
+          <h3>What AI can read</h3>
+          <ul id="canRead" class="read-list"></ul>
+          <h3>What AI may miss</h3>
+          <ul id="mayMiss" class="read-list"></ul>
+        </section>
+      </div>
+
+      <div class="results-grid lower">
+        <section class="panel">
+          <div class="section-head"><h2>Page snapshot</h2></div>
+          <dl id="snapshot" class="snapshot"></dl>
+        </section>
+        <section class="panel">
+          <div class="section-head"><h2>How TinyFish is used</h2></div>
+          <div class="how-grid">
+            <p><b>Search</b> measures live query visibility, ranking position and snippet context.</p>
+            <p><b>Fetch</b> extracts the live page as an AI text tool sees it: metadata, headings, content, links and images.</p>
+            <p><b>Agent</b> opens the live page in a browser workflow to detect rendered content and interaction/JavaScript gaps that plain extraction can miss.</p>
+          </div>
+        </section>
+      </div>
+
+      <section class="panel submission">
+        <div class="section-head"><h2>Bounty requirement checklist</h2><span class="pill ok">3 endpoints</span></div>
+        <div class="check-grid">
+          <div>✓ Takes any public URL + optional target query</div>
+          <div>✓ TinyFish Search and Fetch both contribute meaningfully</div>
+          <div>✓ Reports what AI can/can't read + concrete fixes</div>
+          <div>✓ Quick demo targets for several real pages</div>
+          <div>✓ Explains exactly how TinyFish is used</div>
+          <div>✓ Audits live pages, not saved copies</div>
+        </div>
+        <p class="scope">Scope: this is an AI-readability/search-visibility audit. It does not claim Lighthouse, Core Web Vitals, Search Console, backlinks, traffic or indexation data.</p>
+      </section>
+    </section>
+
+    <footer>Built for TinyFish Bounty Drop 001 · Live Search + Fetch + Agent</footer>
+  </main>
+  <script src="/app.js"></script>
+</body>
+</html>
