@@ -21,9 +21,22 @@ The result is an explainable **AI Visibility Score**, endpoint subscores, a Sear
 - Includes quick demo targets for several real pages
 - Explains exactly how TinyFish is used
 
-## Demo targets
+## Verified demo
 
-- https://www.tinyfish.ai/ — query: `TinyFish web agents`
+Target: https://www.tinyfish.ai/  
+Query: `TinyFish web agents`
+
+Latest successful run:
+- Overall AI Visibility Score: **97/100 (A)**
+- Search: **100/100**, target visible at **#1**
+- Fetch: **95/100**, 827 extractable words, 1 H1
+- Agent: **95/100**, rendered page successfully inspected
+- Same-day fix surfaced: shorten the 208-character meta description to reduce truncation risk
+
+The Agent confirmed that the main page content is readable without gating and that the rendered page does not materially differ from plain extraction.
+
+## Additional demo targets
+
 - https://en.wikipedia.org/wiki/Search_engine_optimization — query: `search engine optimization`
 - https://example.com/ — query: `example domain`
 
